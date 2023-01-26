@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
 // Librares
 import { useDispatch } from "react-redux";
-import { useRouteMatch, Switch, Route } from "react-router-dom";
-// Components
+import { Routes, Route } from "react-router-dom";
+// elements/><
 import BackgroundGradiend from "../components/BackgroundGradient";
 import ScreenWidthWrapper from "../components/ScreenWidthWrapper";
 // Pages
@@ -12,28 +12,35 @@ import PostsListPage from "../pages/Posts/PostsListPage";
 import { getPosts } from "../store/postsSlice";
 
 const PostsLayout = ({ children }) => {
-    const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
-    useEffect(() => {
-        const loadPostData = () => {
-            dispatch(getPosts());
-        };
-        loadPostData();
-    }, [dispatch]);
+  useEffect(() => {
+    const loadPostData = () => {
+      dispatch(getPosts());
+    };
+    loadPostData();
+  }, [dispatch]);
 
-    let { path } = useRouteMatch();
-    return (
-        <>
-            <BackgroundGradiend />
-            <ScreenWidthWrapper>
-                <Switch>
-                    <Route path={path + "/:postId"} component={PostPage} />
-                    <Route exact path={path} component={PostsListPage} />
-                </Switch>
-                {children}
-            </ScreenWidthWrapper>
-        </>
-    );
+  //   let { path } = useRouteMatch();
+  const path = "posts";
+  return (
+    <>
+      <BackgroundGradiend />
+      <ScreenWidthWrapper>
+        <Routes>
+          <Route
+            path={path + "/:postId"}
+            element={<PostPage />}
+          />
+          <Route
+            path={path}
+            element={<PostsListPage />}
+          />
+        </Routes>
+        {children}
+      </ScreenWidthWrapper>
+    </>
+  );
 };
 
 export default PostsLayout;
