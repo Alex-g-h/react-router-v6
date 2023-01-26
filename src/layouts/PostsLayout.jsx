@@ -21,19 +21,17 @@ const PostsLayout = ({ children }) => {
     loadPostData();
   }, [dispatch]);
 
-  //   let { path } = useRouteMatch();
-  const path = "posts";
   return (
     <>
       <BackgroundGradiend />
       <ScreenWidthWrapper>
         <Routes>
           <Route
-            path={path + "/:postId"}
+            path={":postId"}
             element={<PostPage />}
           />
           <Route
-            path={path}
+            path={""}
             element={<PostsListPage />}
           />
         </Routes>

@@ -11,9 +11,6 @@ import SignUpPage from "../pages/SigupPage";
 import { isLoggedInSelector } from "../store/authSlice";
 
 const AuthLayout = () => {
-  //   let { path } = useRouteMatch();
-  const path = "auth";
-
   const isLoggedIn = useSelector(isLoggedInSelector());
 
   //   if (isLoggedIn) {
@@ -25,11 +22,11 @@ const AuthLayout = () => {
       <Card>
         <Routes>
           <Route
-            path={path + "/login"}
+            path={"login"}
             element={<LoginPage />}
           />
           <Route
-            path={path + "/signup"}
+            path={"signup"}
             element={<SignUpPage />}
           />
           {/* <Redirect to={path + "/signup"} /> */}
