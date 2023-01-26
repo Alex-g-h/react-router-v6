@@ -9,6 +9,10 @@ import NavBar from "./components/NavBar/NavBar";
 import withRedux from "./hoc/withRedux";
 import withRouter from "./hoc/withRouter";
 import "react-toastify/dist/ReactToastify.css";
+import PostPage from "./pages/Posts/PostPage";
+import PostsListPage from "./pages/Posts/PostsListPage";
+import LoginPage from "./pages/LoginPage";
+import SignUpPage from "./pages/SigupPage";
 
 function App() {
   return (
@@ -16,17 +20,35 @@ function App() {
       <NavBar />
       <Routes>
         <Route
-          path=""
+          index
           element={<MainPage />}
         />
         <Route
-          path="auth/*"
+          path="auth"
           element={<AuthLayout />}
-        />
+        >
+          <Route
+            path="login"
+            element={<LoginPage />}
+          />
+          <Route
+            path="signup"
+            element={<SignUpPage />}
+          />
+        </Route>
         <Route
-          path="posts/*"
+          path="posts"
           element={<PostsLayout />}
-        />
+        >
+          <Route
+            index
+            element={<PostsListPage />}
+          />
+          <Route
+            path=":postId"
+            element={<PostPage />}
+          />
+        </Route>
         {/* <Redirect
           from="*"
           to="/"
