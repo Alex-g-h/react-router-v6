@@ -13,6 +13,7 @@ import PostPage from "./pages/Posts/PostPage";
 import PostsListPage from "./pages/Posts/PostsListPage";
 import LoginPage from "./pages/LoginPage";
 import SignUpPage from "./pages/SigupPage";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 function App() {
   return (
@@ -46,7 +47,12 @@ function App() {
         </Route>
         <Route
           path="posts"
-          element={<PostsLayout />}
+          element={
+            <ProtectedRoute
+              redirectTo="/auth/login"
+              element={<PostsLayout />}
+            />
+          }
         >
           <Route
             index

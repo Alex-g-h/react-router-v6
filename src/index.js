@@ -7,16 +7,16 @@ import { makeServer } from "./mock/server";
 
 // Mock Server Connect
 if (process.env.REACT_APP_MOCK_ENABLED) {
-    const processEnv = process.env.NODE_ENV;
-    if (processEnv === "development" || processEnv === "test") {
-        makeServer({ environment: processEnv });
-    }
+  const processEnv = process.env.NODE_ENV;
+  if (processEnv === "development" || processEnv === "test") {
+    makeServer({ environment: processEnv });
+  }
 }
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-    // <React.StrictMode>
-    <App />
-    // </React.StrictMode>
+  // <React.StrictMode>
+  <App />
+  // </React.StrictMode>
 );
 
 reportWebVitals();
