@@ -21,7 +21,12 @@ const NavBar = () => {
         {isLoggedIn ? (
           <>
             <StyledNavLink to="/some">Something</StyledNavLink>
-            <StyledNavLink to="/posts">Posts</StyledNavLink>
+            <StyledNavLink
+              to="/posts"
+              end
+            >
+              Posts
+            </StyledNavLink>
             <NavBarDropdown />
           </>
         ) : (
